@@ -1,4 +1,4 @@
-name: CI - Laravel PHPStan
+name: CI Pipeline
 
 on:
   push:
@@ -36,5 +36,14 @@ jobs:
         run: vendor/bin/phpstan analyse --memory-limit=512M
 
       - name: Run PHPUnit tests
-        run: vendor/bin/phpunit 
- 
+        run: vendor/bin/phpunit
+
+      - name: Deploy using ssh
+        uses: appleboy/ssh-action@v1.1.0
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          script: |
+            cd ${{ secrets.APP_PATH }}
+            ./build.sh

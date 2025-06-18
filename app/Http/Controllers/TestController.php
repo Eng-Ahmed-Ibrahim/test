@@ -11,7 +11,7 @@ use App\Contracts\NotificationServiceInterface;
 
 class TestController extends Controller
 {
-    // Test Controller 
+    // Test Controller s
     protected $emailInterface;
 
     public function __construct(EmailInterface $emailInterface)

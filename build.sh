@@ -9,7 +9,7 @@ echo "[2/5] 🗃️ Creating database if one isn't found"
 touch database/database.sqlite
 
 echo "[3/5] 📦 Installing packages using composer"
-composer install
+php composer.phar install --no-interaction --prefer-dist --optimize-autoloader
 
 echo "[4/5] ⚙️ Publishing API Platform assets"
 php artisan api-platform:install
